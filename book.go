@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func Read(fileName string) (*zip.ReadCloser, error) {
+func Read(fileName string) (zip.ReadCloser, error) {
 	// Open the XLSX file
 	xFile, err := zip.OpenReader(fileName)
 	if err != nil {
