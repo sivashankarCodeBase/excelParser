@@ -1,3 +1,3 @@
-module gitlab.dibiz.io/backend/tools/excelParser
+module github.com/sivashankarCodeBase/excelParser
 
 go 1.22.0
