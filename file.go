@@ -1,15 +1,11 @@
 package excelparser
 
-func Read(fileName string, sheetName string) (map[string][]string, error) {
-	xFile, err := readBook(fileName)
+func Extract(xlsxFile *zip.ReadCloser, sheetName string) (map[string][]string, error) {
+	worksheet, err := readSheet(sheetName, xlsxFile)
 	if err != nil {
 		return nil, err
 	}
-	worksheet, err := readSheet(sheetName, xFile)
-	if err != nil {
-		return nil, err
-	}
-	sharedString, err := readSharedStrings(xFile)
+	sharedString, err := readSharedStrings(xlsxFile)
 	if err != nil {
 		return nil, err
 	}
@@ -18,6 +14,6 @@ func Read(fileName string, sheetName string) (map[string][]string, error) {
 		return nil, err
 	}
 
-	defer xFile.Close()
+	defer xlsxFile.Close()
 	return data, nil
 }
