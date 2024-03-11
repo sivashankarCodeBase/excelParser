@@ -1,10 +1,6 @@
 package excelparser
 
-type File struct {
-
-}
-
-func (f *File)read(fileName string, sheetName string) (map[string][]string, error) {
+func Read(fileName string, sheetName string) (map[string][]string, error) {
 	xFile, err := readBook(fileName)
 	if err != nil {
 		return nil, err
